@@ -229,48 +229,45 @@ Enter host password for user 'tom':
 #
 ```
 
-For verbose output
-curl -v http://www.example.com/
+For verbose output use -v. This displays all information including TLS handshake and headers:
+```
+# curl -v http://httpbin.org/get
+*   Trying 34.231.30.52...
+* TCP_NODELAY set
+* Connected to httpbin.org (34.231.30.52) port 80 (#0)
+> GET /get HTTP/1.1
+> Host: httpbin.org
+> User-Agent: curl/7.61.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< Date: Mon, 22 Mar 2021 09:13:56 GMT
+< Content-Type: application/json
+< Content-Length: 255
+< Connection: keep-alive
+< Server: gunicorn/19.9.0
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Credentials: true
+<
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.61.1",
+    "X-Amzn-Trace-Id": "Root=1-60585fd4-70faaf0416197cd754a87c4b"
+  },
+  "origin": "49.207.199.201",
+  "url": "http://httpbin.org/get"
+}
+* Connection #0 to host httpbin.org left intact
+#
+```
 
 To output to a file
+```
 curl https://reqres.in/api/users > users.json
 curl https://reqres.in/api/users -o users.json
-
-
-
-
-
-
+```
 
 Use https://httpbin.org/ to test basic api functionality. It even provides a docker image to run locally. 
-
-
-https://httpbin.org/
-
-From https://developer.wordpress.org/rest-api/glossary/
-HTTP verbs represent the type of action a HTTP client might perform against a resource. These are:
-HEAD 
-GET
-POST
-PUT
-DELETE 
-PATCH
-
-HTTP response status code categories
-
-Informational responses (100–199)
-Successful responses (200–299)
-Redirects (300–399)
-Client errors (400–499)
-Server errors (500–599)
-
-Popular status codes
-200 OK
-301 Moved Permanently
-404 Not Found
-410 Gone (permanent form of 404)
-500 Internal Server Error
-503 Service Unavailable
-
-All popular ones are available at https://en.wikipedia.org/wiki/List_of_HTTP_status_codes and https://developer.mozilla.org/en-US/docs/Web/HTTP/Status 
-
