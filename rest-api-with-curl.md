@@ -86,7 +86,8 @@ Post is used to add a new content or 'create a resource in the server'. To perfo
 #
 ```
 
-POST Request (JSON content)
+To execute a POST with JSON content:  
+```
 # curl -X POST "https://httpbin.org/post" -H "Content-Type: application/json" -d '{"user":"tom","type":"cat","color":"blue"}'
 {
   "args": {},
@@ -110,21 +111,12 @@ POST Request (JSON content)
   "url": "https://httpbin.org/post"
 }
 #
-For verbose output
-curl -v http://www.example.com/
+Note the use of double quotes for the json elements and the single quote for the entire json content together.
+```
 
-To output to a file
-curl https://reqres.in/api/users > users.json
-curl https://reqres.in/api/users -o users.json
-
-
-
-Note here the use of double quotes for the json elements and the single quote for the entire json content together.
-
-PUT Request 	
-Put is used to update or replace a resource in the server. PUT method is required to be idempotent.
-
-Plain PUT
+### PUT Request 	
+Put is used to update or replace a resource in the server. PUT method has to be idempotent.
+```
 # curl -X PUT "https://httpbin.org/put" -d "user=tom&type=cat&color=blue"
 {
   "args": {},
@@ -148,8 +140,11 @@ Plain PUT
   "url": "https://httpbin.org/put"
 }
 #
+```
 
-JSON PUT 
+To execute a PUT with JSON content:
+
+```
 # curl -X PUT "https://httpbin.org/put" -H "Content-Type: application/json" -d '{"user":"tom","type":"cat","color":"blue"}'
 {
   "args": {},
@@ -173,10 +168,11 @@ JSON PUT
   "url": "https://httpbin.org/put"
 }
 #
+```
 
-DELETE Request
+### DELETE
 This is used to delete a specific resource
-
+```
 # curl -i -X DELETE "https://httpbin.org/delete"
 HTTP/2 200
 date: Sun, 21 Mar 2021 13:22:27 GMT
@@ -202,8 +198,11 @@ access-control-allow-credentials: true
   "url": "https://httpbin.org/delete"
 }
 #
+```
+Notice the use of -i to see the response headers. 
 
-HTTP basic authentication
+### HTTP basic authentication
+```
 # curl https://httpbin.org/basic-auth/tom/tompass -u tom
 Enter host password for user 'tom':
 {
@@ -211,9 +210,11 @@ Enter host password for user 'tom':
   "user": "tom"
 }
 #
- 
-Bearer authentication OR Token authentication
+```
 
+### Bearer authentication OR Token authentication
+
+```
 # curl -X GET "https://httpbin.org/bearer" -H "accept: application/json" -H "Authorization: a11b22c33"
 #
 
@@ -226,10 +227,19 @@ Bearer authentication OR Token authentication
   "gravatar_id": "",
 }
 #
+```
+
+For verbose output
+curl -v http://www.example.com/
+
+To output to a file
+curl https://reqres.in/api/users > users.json
+curl https://reqres.in/api/users -o users.json
 
 
-Use -i to see the response headers. 
-Use -v to see verbose output including all headers
+
+
+
 
 
 Use https://httpbin.org/ to test basic api functionality. It even provides a docker image to run locally. 
